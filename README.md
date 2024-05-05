@@ -40,9 +40,9 @@ Outputs are located in the predictions folder; Here we provide an example of out
 - A 1aui-A.py script for visualizing the results with Chimera.
 - The PDB file with binding site probabilities inserted in the B-factor field
 
-Below is a visualization of predicrted outputs for 1aui_A protein. 
+Below is a visualization of predicted outputs for 1aui_A protein. 
 
-<img src="image/1aui.png" width="900"/>
+<img src="image/1aui.png" width="560"/>
 
 ## Retraining SCREEN
 Catalytic residue data sets are provided in the datasets folder, which included:
