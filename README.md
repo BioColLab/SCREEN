@@ -18,43 +18,43 @@ pip install -r requirements.txt
 ```
  
 No other external software is necessary to run SCREEN.
-Paths to the library, MSA & structures folders are defined in utilities/paths.py
 
-## Predicting binding sites using evolutionary information
+
+## Predicting catalytic residues using evolutionary information
 
 The script for predicting catalytic residues with experimentally determined enzyme structure is predict.py, see some examples:
 
 ```
-python predict.py -example_PDB.txt
+python predict_SCREEN.py --PDBfile ./Example/PDB_id.txt
 ```
 
 The first argument is:
-- A .txt file containing PDB ID (e.g. example_PDB.txt); 
+- A .txt file containing PDB ID (e.g. Example/PDB_id.txt); 
 
-This file can contain multiple PDBids. A specific chain or list of chain can be added to the ID with an underscore (e.g. 1brs_A, 2p6b_B). 
+This file can contain multiple PDB_ids. A specific chain or list of chain can be added to the ID with an underscore (e.g. 1brs_A, 2p6b_B). 
 
 
 ## Visualizing the outputs
-Outputs are located in the predictions folder; Here we provide an example of outputs obtained by predicting catalytic residues on the 1aui_A protein
+Here we provide an example of outputs obtained by predicting catalytic residues on the 1aui_A protein
 
-- A 1aui-A.py script for visualizing the results with Chimera.
-- The PDB file with binding site probabilities inserted in the B-factor field
+- A Visualization/1aui-A.py script for visualizing the results with Pymol.
+- The PDB file with catalytic residue probabilities inserted in the B-factor field
 
-Below is a visualization of predicted outputs for 1aui_A protein. 
+Below is a visualization of predicrted outputs for 1aui_A protein. 
 
-<img src="image/1aui.png" width="560"/>
+<img src="image/1aui.png" width="500"/>
 
 ## Retraining SCREEN
-Catalytic residue data sets are provided in the datasets folder, which included:
-- the PDB_IDs used for training, in text format (traing_.txt).
-- the label files, in text format (traing_labels.txt). 
+Catalytic residue data sets are provided in the Dataset/training_data folder, which included:
+- the PDB_ids used for training in text format (training_id_withEC.txt).
+- the label files in text format (training_label.txt). 
 
 ### Training from scratch on the enzyme catalytic residue data set
 
 This can be done via:
 
 ```
-python train_contrastive.py
+python train_SCREEN.py
 ```
 
 The main stages of train.py are:
@@ -67,24 +67,25 @@ The main stages of train.py are:
 
 This can be done via:
 ```
-python test_contrastive.py
+python test_SCREEN.py
 ```
 
-## Handcrafted features baseline
+##  features extraction pipline
 To extract the handcrafted enzyme features, please use:
 
 ```
-python baselines/atom_fea_extract.py
-python baselines/feature_extract.py
+python feature_extract.py
 ```
 The main stages of enzyme feature extraction are:
 1. Writing the enzyme sequence fasta file 
 2. Downloading the pdb files 
 3. Preprocessing of the pdb files
-4. Contact map construction according to the residue 3D coordination.
-5. MSA construction and PWM calculation for evolutionary information, 
+4. Contact map construction according to the residue 3D coordination
+5. MSA construction and PWM calculation 
+6. Atom feature extraction
+7. Protein residual level embedding using language model ProtT5 
 
-Note that DSSP and HHM must be installed and appropriately linked.  
+Note that PSIBLAST and HHM must be installed and appropriately linked. Paths to the PSIBLAST and HHBLITS are defined in feature_extract.py
 
 
 ## Contact
