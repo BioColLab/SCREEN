@@ -63,7 +63,7 @@ The main stages of train.py are:
 2. Training of the network 
 3. Prediction on the validation sets.
 
-### Testing on five test data sets
+## Testing on five test data sets
 
 This can be done via:
 ```
