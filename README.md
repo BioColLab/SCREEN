@@ -87,6 +87,8 @@ The main stages of enzyme feature extraction are:
 
 Note that PSIBLAST and HHM must be installed and appropriately linked. Paths to the PSIBLAST and HHBLITS are defined in feature_extract.py
 
+All source data in the paper can be found at https://huggingface.co/datasets/Biocollab/SCREEN/tree/main.
+
 
 ## Contact
 For any question and comment regarding the code, please reach out to
