@@ -16,9 +16,50 @@ conda activate SCREEN_env
 conda install pytorch==1.7.0 torchvision==0.4.0 torchaudio==0.7.0 -c pytorch 
 pip install -r requirements.txt
 ```
- 
-No other external software is necessary to run SCREEN.
+Additionally, SCREEN utilizes a pre-trained language model protT5, BLAST, and HMMER for protein residual embedding and evolutionary information extraction. The protT5, PSIBLAST and HHM must be installed and appropriately linked.
 
+(1) Install protT5
+
+The pre-trained language model protT5 (referring to https://github.com/agemagician/ProtTrans) can be installed via
+
+```
+pip install torch
+pip install transformers
+pip install sentencepiece
+```
+
+(2) Install PSIBLAST, HHblits, DSSP
+
+** Install BLAST+ for extracting PSSM (position-specific scoring matrix) profiles. 
+
+To download and install the BLAST+ package (https://ftp.ncbi.nlm.nih.gov/blast/executables/LATEST/) and BLAST database, Please refer to BLAST® Help (https://www.ncbi.nlm.nih.gov/books/NBK52640/).
+Set the absolute paths of PSIBLAST and databases in the script "feature_extract.py". 
+    
+** Install HHblits for extracting HMM profiles!
+
+To install HHblits and download uniclust30_2018_08(http://wwwuser.gwdg.de/~compbiol/uniclust/2018_08/uniclust30_2018_08_hhsuite.tar.gz) for HHblits, please refer to https://github.com/soedinglab/hh-suite. Set the absolute paths of HHBLITS and uniclust30_2018_08 databases in the script "feature_extract.py".
+    
+** Install DSSP for extracting SS (Secondary structure) profiles. Set the absolute path of dssp in the script "feature_extract.py".
+
+Note: Difference versions of blast+, HHblits and their databases may result in slightly different PSSM and HMM profiles, leading to slight different predictions. Typical download databases and install bioinformatics tools time on a "normal" desktop computer is 10 hours.
+
+
+##  Enzyme feature extraction pipline
+To extract the handcrafted enzyme features, please use:
+
+```
+python feature_extract.py
+```
+The main stages of enzyme feature extraction are:
+1. Writing the enzyme sequence fasta file 
+2. Downloading the pdb files 
+3. Preprocessing of the pdb files
+4. Contact map construction according to the residue 3D coordination
+5. MSA construction and PWM calculation 
+6. Atom feature extraction
+7. Protein residual level embedding using language model ProtT5 
+
+Note: Paths to the PSIBLAST and HHBLITS are defined in feature_extract.py. 
 
 ## Predicting catalytic residues using evolutionary information
 
@@ -69,23 +110,6 @@ This can be done via:
 ```
 python test_SCREEN.py
 ```
-
-##  features extraction pipline
-To extract the handcrafted enzyme features, please use:
-
-```
-python feature_extract.py
-```
-The main stages of enzyme feature extraction are:
-1. Writing the enzyme sequence fasta file 
-2. Downloading the pdb files 
-3. Preprocessing of the pdb files
-4. Contact map construction according to the residue 3D coordination
-5. MSA construction and PWM calculation 
-6. Atom feature extraction
-7. Protein residual level embedding using language model ProtT5 
-
-Note that PSIBLAST and HHM must be installed and appropriately linked. Paths to the PSIBLAST and HHBLITS are defined in feature_extract.py
 
 All source data in the paper can be found at https://huggingface.co/datasets/Biocollab/SCREEN/tree/main.
 
