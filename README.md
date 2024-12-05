@@ -30,7 +30,7 @@ pip install sentencepiece
 
 (2) Install PSIBLAST, HHblits, DSSP
 
-** Install BLAST+ for extracting PSSM (position-specific scoring matrix) profiles. 
+** Install BLAST+ for extracting PSSM (position-specific scoring matrix) profiles! 
 
 To download and install the BLAST+ package (https://ftp.ncbi.nlm.nih.gov/blast/executables/LATEST/) and BLAST database, Please refer to BLAST® Help (https://www.ncbi.nlm.nih.gov/books/NBK52640/).
 Set the absolute paths of PSIBLAST and databases in the script "feature_extract.py". 
@@ -39,7 +39,7 @@ Set the absolute paths of PSIBLAST and databases in the script "feature_extract.
 
 To install HHblits and download uniclust30_2018_08(http://wwwuser.gwdg.de/~compbiol/uniclust/2018_08/uniclust30_2018_08_hhsuite.tar.gz) for HHblits, please refer to https://github.com/soedinglab/hh-suite. Set the absolute paths of HHBLITS and uniclust30_2018_08 databases in the script "feature_extract.py".
     
-** Install DSSP for extracting SS (Secondary structure) profiles. Set the absolute path of dssp in the script "feature_extract.py".
+** Install DSSP for extracting SS (Secondary structure) profiles! Set the absolute path of dssp in the script "feature_extract.py".
 
 Note: Difference versions of blast+, HHblits and their databases may result in slightly different PSSM and HMM profiles, leading to slight different predictions. Typical download databases and install bioinformatics tools time on a "normal" desktop computer is 10 hours.
 
