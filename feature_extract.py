@@ -434,7 +434,7 @@ def matched_atomfea(seq_id, ref_seq, data_path):
     return
 
 def seq_fea_generate(pro, seqence, data_path):
-    all_for_assign = np.loadtxt('./Dataset/training_data/seqfea/all_assign.txt')
+    all_for_assign = np.loadtxt('./Dataset/all_assign.txt')
     xx = seqence
     x_p = np.zeros((len(xx), 7))
     for j in range(len(xx)):
