@@ -23,7 +23,6 @@ Additionally, SCREEN utilizes a pre-trained language model protT5, BLAST, and HM
 The language model protT5 (referring to https://github.com/agemagician/ProtTrans) can be installed via
 
 ```
-pip install torch
 pip install transformers
 pip install sentencepiece
 ```
