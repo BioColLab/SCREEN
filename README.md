@@ -1,7 +1,9 @@
 # Structure-guided prediction of catalytic residues in enzymes by deep learning
 ## Background
 
-We introduced SCREEN (Structure-based Catalytic Residue Recognition in Enzymes) for precise and high-throughput prediction of catalytic residues across a wide range of taxonomic enzyme groups. This framework integrates heterogeneous data sources regarding enzyme structures, functions and evolutionary profiles.
+We introduced SCREEN (Structure-based Catalytic Residue Recognition in Enzymes) for precise and high-throughput prediction of catalytic residues across a wide range of taxonomic enzyme groups. This framework integrates heterogeneous data sources regarding enzyme structures, functions and evolutionary profiles. 
+
+#### Note: A streamlined version named SCREEN-Light, designed for faster training and minimal software dependencies, is available at https://github.com/BioColLab/SCREEN-Light.
 
 <img src="image/SCREEN.png" width="900"/>
 
